@@ -1,23 +1,24 @@
 #include<iostream>
-#include<cstring>
 using namespace std;
 
-int ar[41],dp[41];
-
+int ar[101];
+int dp[101];
 int main(void){
-	cin.sync_with_stdio(false);
+	ios::sync_with_stdio(false);
+	cin.tie(0);
 	int n;
 	while(cin>>n){
-		for(int i=1;i<=n;i++)
+		if(n==0)break;
+		for(int i=1;i<=n;i++){
 			cin>>ar[i];
-		dp[0]=0;
-		for(int i=1;i<=n+1;i++){
-			dp[i]=dp[i-1]+max(ar[i-1]*2,ar[i-1]+ar[i]);
-		}	
-		cout<<dp[n+1]<<endl;
-		memset(ar,0,sizeof(ar));
+			dp[i]=dp[i+1]=dp[i+2]=0;
+		}
+		for(int i=1;i<=n;i++){
+			dp[i+1]=max(dp[i+1],dp[i]+ar[i]);
+			dp[i+2]=max(dp[i+2],dp[i]+2*ar[i]);
+		}
+		cout<<max(dp[n+1],dp[n+2])<<endl;
 	}
 	return 0;
 }
-
 

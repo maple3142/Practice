@@ -1,53 +1,41 @@
 #include<iostream>
+#include<vector>
 using namespace std;
-int p[100001];
-int n,k;
+typedef pair<int,int> pii;
 
-bool check(int maxw){
-	int thissum=0,times=0;
+int T,n,k,idx,sumw,w;
+int ar[100005];
+bool ok(int w){
+	int s=0,t=0;
 	for(int i=0;i<n;i++){
-		if(p[i]>maxw)
-			return false;
-		if(thissum<=maxw)
-			thissum+=p[i];
-		if(thissum>maxw){
-			times++;
-			thissum=0;
+		if(ar[i]>w)return false;
+		if(s<=w)s+=ar[i];
+		if(s>w){
+			t++;
 			i--;
+			s=0;
 		}
 	}
-	times++;
-	//cout<<maxw<<" "<<thissum<<" "<<times<<endl;
-	if(times<=k)
-		return true;
-	return false;
+	return t+1<=k;
 }
 int main(void){
-	int T;
+	ios::sync_with_stdio(false);
 	cin>>T;
-	for(int i=0;i<T;i++){
-		
+	while(T--){
 		cin>>n>>k;
-		int wsum=0;
-		for(int j=0;j<n;j++){
-			int id,w;
-			cin>>id>>w;
-			wsum+=w;
-			p[id]=w;
+		for(int i=0;i<n;i++){
+			cin>>idx>>w;
+			ar[idx]=w;
+			sumw+=w;
 		}
-		int l = 1,r = wsum,ans;
+		int l=1,r=sumw;
 		while(l<r){
-			int mid = (l+r)/2;
-			if(check(mid)){
-				r = mid;
-				ans = mid;
-			}
-			else 
-				l = mid+1;
+			int mid=(l+r)/2;
+			if(ok(mid))r=mid;
+			else l=mid+1;
 		}
-		cout<<ans<<endl;
+		cout<<r<<endl;
 	}
 	return 0;
 }
-
 

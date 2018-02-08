@@ -9,8 +9,6 @@ bool ovis[10];
 bool nvis[10];
 int n,m,mx=0;
 void DFS(bool m,int id,int l){
-	//cout<<(m?"old ":"new ")<<id<<endl;
-	//old
 	if(m){
 		ovis[id]=true;
 		for(auto i:plist[id]){
@@ -19,7 +17,6 @@ void DFS(bool m,int id,int l){
 		}
 		ovis[id]=false;
 	}
-	//new
 	else{
 		nvis[id]=true;
 		for(int i=0;i<n;i++){

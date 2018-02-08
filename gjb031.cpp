@@ -13,14 +13,20 @@ int main(void){
 	}
 	int mx=0;
 	for(int j=1;j<=n;j++){
-		for(int i=0;i<=m;i++){
-			if(i-l[j]<0){
-				dp[j%2][i]=dp[(j+1)%2][i];
-				continue;
+		for(int i=l[j];i<=m;i++){
+			dp[j%2][i]=max(dp[(j+1)%2][i],dp[j%2][i-l[j]]+s[j]);
+			/*
+			int k=0,mxx=0;
+			while(true){
+				if(i-l[j]*k<0){
+					break;
+				}
+				mxx=max(mxx,dp[(j+1)%2][i-l[j]*k]+s[j]*k);
+				k++;
 			}
-			dp[j%2][i]=max(dp[(j+1)%2][i],dp[(j+1)%2][i-l[j]]+s[j]);
+			dp[j%2][i]=mxx;
+			*/
 			mx=max(mx,dp[j%2][i]);
-			//cout<<j<<" "<<i<<" "<<dp[j%2][i]<<endl;
 		}
 	}
 	cout<<mx<<endl;
