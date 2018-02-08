@@ -1,0 +1,121 @@
+<div class="page-content single clearfix">
+                <section class="box clearfix main-content">
+                    
+                    
+
+
+
+
+
+
+
+
+<div class="problem-wrapper">
+
+    <div class="problem-headline clearfix">
+        <div class="headline-wrapper"><h1>Problem B<br>廢文大資料 mining</h1></div>
+    </div>
+
+            
+  <div class="problembody">
+    <p>現在還是雲端大數據物聯網的時代，社群網站上無時無刻仍然有著海量的廢文被發表。</p>
+
+    <p>這次，你手上的資料換成了全球網路廢文資料集 (data set)，試圖從中得到珍貴的資訊。</p>
+
+    <p>你在茫茫廢文海中發現了一個使用者 — Eddy —
+    所發的廢文特別有深意，在數位的時代，他所發的所有廢文被編碼成了一串整數 <span class="tex2jax_process">$a_1, a_2, \ldots , a_ n$</span>。第
+    <span class="tex2jax_process">$i$</span> 個整數代表 Eddy 在第
+    <span class="tex2jax_process">$i$</span>
+    天所發的廢文。數字的大小有它的意義，當我們看了一篇被編碼成數字 <span class="tex2jax_process">$x$</span> 的廢文之後，我們心靈的<b class="bfseries">正面能量值</b>會加上 <span class="tex2jax_process">$x$</span>。當正面能量值掉到小於 <span class="tex2jax_process">$0$</span>
+    時，我們會變得內心扭曲，言行不得體，毀家廢婚，面容猥瑣，這是很不好的事情。</p>
+
+    <p>為了大家好，你想要檢查 Eddy 所發的廢文會不會造成社會道德危機。</p>
+
+    <p>我們在看一個人發的廢文時，常常都是從某一則廢文開始，照著發表時間一篇一篇看，看到不想看為止。我們可以定義「看法」為一組
+    <span class="tex2jax_process">$(l, r)$</span>，代表依序把
+    <span class="tex2jax_process">$a_ l, a_{l+1}, \ldots , a_
+    r$</span> 這幾篇廢文看過。而「不道德」的看法則是在觀看廢文的過程中，會有某些時刻使得起始正面能量值為
+    <span class="tex2jax_process">$0$</span> 的人內心扭曲。例如 Eddy 發了
+    <span class="tex2jax_process">$100, -300, 200, 400$</span>
+    這幾篇廢文，那 <span class="tex2jax_process">$(3, 4)$</span> 是一組道德的看法
+    (觀看 <span class="tex2jax_process">$200, 400$</span>
+    的過程中正面能量值總是不小於 <span class="tex2jax_process">$0$</span>)；<span class="tex2jax_process">$(1, 4)$</span> 則是不道德的看法，因為看完第 <span class="tex2jax_process">$2$</span> 篇時正面能量值為 <span class="tex2jax_process">$-200$</span>，這是內心扭曲的證據。</p>
+
+    <p>你想要知道，Eddy 所發的廢文，有幾種不道德的看法。</p>
+
+    <h3>Input</h3>
+
+    <p>測試資料共包含兩行。</p>
+
+    <p>第一行有一個正整數 <span class="tex2jax_process">$n$</span>，表示 Eddy
+    所發的廢文數量。第二行有 <span class="tex2jax_process">$n$</span>
+    個以空格隔開的整數，第 <span class="tex2jax_process">$i$</span> 個數字
+    <span class="tex2jax_process">$a_ i$</span> 表示 Eddy 於第
+    <span class="tex2jax_process">$i$</span> 天所發的廢文。</p>
+
+    <ul class="itemize">
+      <li>
+        <p>所有 <span class="tex2jax_process">$a_ i$</span> 皆滿足
+        <span class="tex2jax_process">$-100,000 \le a_ i \le
+        100,000$</span></p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$1 \le n \le
+        10^6$</span></p>
+      </li>
+    </ul>
+
+    <h3>Output</h3>
+
+    <p>輸出一行包含一個非負整數，代表 Eddy 廢文裡不道德看法的數量。</p>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>3
+-1 1 1
+</pre>
+        </td>
+
+        <td>
+          <pre>3
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 2</th>
+
+        <th>Sample Output 2</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>4
+1 -3 2 4
+</pre>
+        </td>
+
+        <td>
+          <pre>6
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+    
+</div>
+
+
+                </section>
+            </div>

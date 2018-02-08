@@ -1,0 +1,134 @@
+<div class="page-content single clearfix">
+                <section class="box clearfix main-content">
+                    
+                    
+
+
+
+
+
+
+
+
+<div class="problem-wrapper">
+
+    <div class="problem-headline clearfix">
+        <div class="headline-wrapper"><h1>Problem H<br>吃吃為吃吃，是吃也</h1></div>
+    </div>
+
+            
+  <div class="problembody">
+    <p>喜歡做點心餵食小蘿莉的蘿莉農為了精進他的廚藝，特地從世界各地收集了 <span class="tex2jax_process">$n$</span>
+    種特級食材。他打算從中挑選一些食材製作成特級餅乾，之後裝進他親手製作的精美餅乾盒中。但要挑選哪些食材好呢？蘿莉農覺得他必須親自嚐過所有可能的非空食材組合，才有辦法從這
+    <span class="tex2jax_process">$2^ n - 1$</span>
+    種組合中挑出最適合蘿莉食用的餅乾。</p>
+
+    <p>
+    我們知道，有些食材是天生絕配，搭在一起會有額外的好吃度加成；而有些食材如果混在一起的話反而會有反效果，甚至是食物中毒。更精確地來說，一個食材搭配是一個集合
+    <span class="tex2jax_process">$s$</span> 以及一個好吃度影響值
+    <span class="tex2jax_process">$v$</span>，如果挑選的食材組合包含
+    <span class="tex2jax_process">$s$</span> 的話，其好吃度就會加上
+    <span class="tex2jax_process">$v$</span>。也就是說一個食材組合的好吃度，就是其所有包含的食材搭配的好吃度總和。舉例來說，如果食材搭配
+    <span class="tex2jax_process">$\{ 1, 2\} $</span> 的好吃度影響值是
+    <span class="tex2jax_process">$3$</span>，而食材搭配 <span class="tex2jax_process">$\{ 2, 3\} $</span> 的好吃度影響值是 <span class="tex2jax_process">$-1$</span>，那麼食材組合 <span class="tex2jax_process">$\{ 1, 2, 3\} $</span> 的好吃度就是 <span class="tex2jax_process">$3 + (-1) = 2$</span>。</p>
+
+    <p>蘿莉農嘗試各種組合的同時，他的廚藝熟練度也會逐漸上升。因此若第 <span class="tex2jax_process">$i$</span> 次的食材組合好吃度是 <span class="tex2jax_process">$d$</span>，則製作出來的餅乾好吃度會是 <span class="tex2jax_process">$i \times
+    d$</span>。為了讓這個試嚐餅乾的過程盡量愉悅而不要從此對餅乾有心理陰影，他希望找一個最好的組合嘗試順序，讓做出來的餅乾總好吃度最大。以上面的例子來說，一種可能的最好嘗試順序為
+    <span class="tex2jax_process">$\{ 2,3\} , \{ 1\} , \{ 2\} , \{
+    3\} , \{ 1,3\} , \{ 1,2,3\} , \{ 1,2\} $</span>，其總好吃度為
+    <span class="tex2jax_process">$1 \times -1 + 2 \times 0 + 3
+    \times 0 + 4 \times 0 + 5 \times 0 + 6 \times 2 + 7 \times 3 =
+    32$</span>。</p>
+
+    <h3>Input</h3>
+
+    <p>測試資料第一行有兩個正整數 <span class="tex2jax_process">$n,
+    m$</span>，分別代表食材數跟食材搭配數。接下來 <span class="tex2jax_process">$m$</span> 行，每行會有一個字串 <span class="tex2jax_process">$s_ i$</span> 跟一個整數 <span class="tex2jax_process">$v_ i$</span>。如果 <span class="tex2jax_process">$s_ i$</span> 的第 <span class="tex2jax_process">$j$</span> 個字元是 <tt class="ttfamily">1</tt>
+    的話代表此搭配中包含第 <span class="tex2jax_process">$j$</span> 種食材；反之若為
+    <tt class="ttfamily">0</tt> 的話則代表不包含。而 <span class="tex2jax_process">$v_ i$</span> 則為此搭配的好吃度影響值。</p>
+
+    <ul class="itemize">
+      <li>
+        <p><span class="tex2jax_process">$1 \le n \le
+        22$</span></p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$1 \le m \le
+        10^5$</span></p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$|s_ i| = n$</span></p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$s_ i$</span> 中至少有一個字元為
+        <tt class="ttfamily">1</tt></p>
+      </li>
+
+      <li>
+        <p>所有的 <span class="tex2jax_process">$s_ i$</span> 皆相異</p>
+      </li>
+
+      <li>
+        <p><span class="tex2jax_process">$-100 \le v_ i \le
+        +100$</span></p>
+      </li>
+    </ul>
+
+    <h3>Output</h3>
+
+    <p>請輸出一個整數於一行，代表最好嘗試順序的總好吃度。</p>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 1</th>
+
+        <th>Sample Output 1</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>2 2
+01 1
+10 -1
+</pre>
+        </td>
+
+        <td>
+          <pre>2
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+
+    <table class="sample" summary="sample data">
+      <tbody><tr>
+        <th>Sample Input 2</th>
+
+        <th>Sample Output 2</th>
+      </tr>
+
+      <tr>
+        <td>
+          <pre>3 2
+110 3
+011 -1
+</pre>
+        </td>
+
+        <td>
+          <pre>32
+</pre>
+        </td>
+      </tr>
+    </tbody></table>
+  </div>
+
+    
+</div>
+
+
+                </section>
+            </div>
