@@ -1,10 +1,12 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
-typedef pair<int,int> pii;
+typedef long long int ll;
+typedef pair<int,ll> pii;
 
 pii ar[100005];
 pii dp[100005];
-bool ok[18]={0,0,0,0,1,0,0,1,1,0,0,1,1,0,1,1,1,0};
+bool ok[18]={1,0,0,0,1,0,0,1,1,0,0,1,1,0,1,1,1,0};
 inline bool check(int a,int b){
 	return b-a>=18||ok[b-a];
 }
@@ -16,18 +18,18 @@ int main(void){
 		cin>>a>>b;
 		ar[i]=pii(b,a);
 	}
+	sort(ar+1,ar+1+n);
 	//dp[i]=max(dp[i-4],dp[i-7])+ar[i]
 	dp[1]=check(0,ar[1].first)?ar[1]:pii(0,0);
-	int ans=dp[1].second;
+	ll ans=dp[1].second;
 	for(int i=2;i<=n;i++){
-		int mx=0;
+		ll mx=0;
 		for(int j=1;j<=18&&i-j>=1;j++){
 			if(!check(dp[i-j].first,ar[i].first))continue;
 			mx=max(mx,dp[i-j].second);
 		}
 		dp[i]=pii(ar[i].first,mx+ar[i].second);
-		cout<<dp[i].first<<','<<dp[i].second<<endl;
-		dp[i]=pii(ar[i].first,mx+ar[i].second);
+		//cout<<dp[i].first<<','<<dp[i].second<<endl;
 		ans=max(dp[i].second,ans);
 	}
 	cout<<ans<<endl;

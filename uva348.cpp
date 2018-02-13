@@ -4,12 +4,11 @@
 #define B second
 using namespace std;
 typedef pair<int,int> pii;
-typedef long long int ll;
 
 const int MX=11;
 
 pii ar[MX]={};
-ll dp[MX][MX];
+int dp[MX][MX];
 int cut[MX][MX];
 void print(int a,int b){
 	//cout<<a<<' '<<b<<endl;
@@ -40,16 +39,16 @@ int main(void){
 		}
 		for(int i=2;i<n;i++){
 			for(int j=1;j+i<=n;j++){
-				ll a=dp[j][j+i-1]+ar[j].A*ar[j+i].A*ar[j+i].B;
-				ll b=dp[j+1][j+i]+ar[j].A*ar[j].B*ar[j+i].B;
-				if(a>b){
-					dp[j][j+i]=b;
-					cut[j][j+i]=cut[j][j+i-1];
+				int mn=0x3f3f3f3f,mni=0;
+				for(int k=j;k<=j+i-1;k++){
+					int a=dp[j][k]+dp[k+1][j+i]+ar[j].A*ar[k].B*ar[j+i].B;
+					if(mn>a){
+						mn=a;
+						mni=k;
+					}
 				}
-				else{
-					dp[j][j+i]=a;
-					cut[j][j+i]=cut[j+1][j+i];
-				}
+				dp[j][j+i]=mn;
+				cut[j][j+i]=mni;
 				//cout<<j<<' '<<j+i<<' '<<cut[j][j+i]<<endl;
 			}
 		}
