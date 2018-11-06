@@ -48,12 +48,12 @@ void bt(int deep=1){
 	for(int i=1;i<=n;i++){
 		if(isPlaceable(deep,i)){
 			board[deep][i]=ROOK;
-			
+
 			ans=max(ans,countRook());
 			bt(deep);
-			
+
 			board[deep][i]=EMPTY;
-		} 
+		}
 	}
 }
 int main(void){
