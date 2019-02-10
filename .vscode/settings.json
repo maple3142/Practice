@@ -3,6 +3,7 @@
 		"*.html": "html",
 		"*.lock": "plaintext",
 		"*.ejs": "html",
-		"iostream": "cpp"
+		"iostream": "cpp",
+		"ostream": "cpp"
 	}
 }
