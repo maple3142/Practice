@@ -18,7 +18,12 @@ int main(void) {
 	for (int i = 0; i < 26; i++) {
 		if (ar[i].size() > 0) {
 			mn = min(mn, (int)ar[i].size());
+			cnt++;
 		}
+	}
+	if (cnt != m) {
+		cout << 0 << endl;
+		return 0;
 	}
 	cout << mn << endl;
 	for (int i = 0; i < mn; i++) {

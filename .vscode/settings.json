@@ -4,6 +4,8 @@
 		"*.lock": "plaintext",
 		"*.ejs": "html",
 		"iostream": "cpp",
-		"ostream": "cpp"
+		"ostream": "cpp",
+		"vector": "cpp",
+		"set": "cpp"
 	}
 }
