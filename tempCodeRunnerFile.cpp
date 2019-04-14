@@ -1,32 +1,42 @@
+#include <algorithm>
 #include <iostream>
-#include <queue>
 #include <vector>
 using namespace std;
+typedef long long int ll;
 
-queue<int> ar[26];
+const ll MOD = 998224350;
+int up[1001], down[1001];
 int main(void) {
 	ios::sync_with_stdio(false);
-	int n, m;
-	cin >> n >> m;
-	string s;
-	cin >> s;
-	for (int i = 0; i < n; i++) {
-		ar[s[i] - 'A'].push(i + 1);
-	}
-	int mn = 0x3f3f3f3f;
-	int cnt = 0;
-	for (int i = 0; i < 26; i++) {
-		if (ar[i].size() > 0) {
-			mn = min(mn, (int)ar[i].size());
+	cin.tie(0);
+	int T;
+	cin >> T;
+	while (T--) {
+		int n, r;
+		cin >> n >> r;
+		r = min(r, n - r);
+		for (int i = 0; i < r; i++) {
+			up[i] = n - i;
+			down[i] = i + 1;
 		}
-	}
-	cout << mn << endl;
-	for (int i = 0; i < mn; i++) {
-		for (int ch = 0; ch < m; ch++) {
-			cout << ar[ch].front() << ' ';
-			ar[ch].pop();
+		for (int i = 0; i < r; i++) {
+			if (down[i] == 1)
+				break;
+			for (int j = 0; j < r; j++) {
+				int g = __gcd(down[i], up[j]);
+				if (g > 1) {
+					down[i] /= g;
+					up[j] /= g;
+				}
+				if (down[i] == 1)
+					break;
+			}
 		}
-		cout << endl;
+		ll ans = 1;
+		for (int i = 0; i < r; i++) {
+			ans = (ans * up[i]) % MOD;
+		}
+		cout << ans << endl;
 	}
 	return 0;
 }
