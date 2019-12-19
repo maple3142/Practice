@@ -22,7 +22,7 @@ struct Point {
 };
 Point D[4] = {Point(1, 0), Point(0, 1), Point(-1, 0), Point(0, -1)};
 int main(void) {
-	//ios::sync_with_stdio(false);
+	ios::sync_with_stdio(false);
 	int nk, nq, nm;
 	while (cin >> nk >> nq >> nm) {
 		Point k(nk), q(nq), m(nm);
